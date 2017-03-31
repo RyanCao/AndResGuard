@@ -6,7 +6,7 @@
         <!--sudo apt-get install p7zip-full in linux -->
         <!--and you must write the sign data fist, and i found that if we use linux, we can get a better result -->
         <seventzip value="false"/>
-        <!-- 7zip compress type -->
+        <!-- 7zip compress type -mx0[store] -mx1[fast compress] -mx3 -mx5 -mx7 -mx9 -->
         <seventzip_type value="-mx5"/>
         <!--the sign data file name in your apk, default must be META-INF-->
         <!--generally, you do not need to change it if you dont change the meta file name in your apk-->
