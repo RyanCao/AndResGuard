@@ -329,11 +329,25 @@ public class ResourceApkBuilder {
     }
 
     private void generalRaw7zip() throws IOException, InterruptedException {
+        List<String> compressList = new ArrayList<>(); 
+        compressList.add("-mx0");
+        compressList.add("-mx1");
+        compressList.add("-mx3");
+        compressList.add("-mx5");
+        compressList.add("-mx7");
+        compressList.add("-mx9");
+
+        String compressType = config.m7zipCompressType;
+        
+        if(compressType == null || compressType.length() == 0 || compressList.indexOf(compressType)<0){
+            compressType = "-mx9";
+        }
+
         String outPath = m7zipOutPutDir.getAbsoluteFile().getAbsolutePath();
         String path = outPath + File.separator + "*";
         //极限压缩
         String cmd = Utils.isPresent(config.m7zipPath) ? config.m7zipPath : TypedValue.COMMAND_7ZIP;
-        ProcessBuilder pb = new ProcessBuilder(cmd, "a", "-tzip", mSignedWith7ZipApk.getAbsolutePath(), path, "-mx9");
+        ProcessBuilder pb = new ProcessBuilder(cmd, "a", "-tzip", mSignedWith7ZipApk.getAbsolutePath(), path, compressType);
         Process pro = pb.start();
 
         InputStreamReader ir = new InputStreamReader(pro.getInputStream());

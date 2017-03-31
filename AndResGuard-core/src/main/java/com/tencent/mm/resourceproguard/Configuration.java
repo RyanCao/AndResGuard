@@ -40,6 +40,7 @@ public class Configuration {
     protected static final String MAPPING_ISSUE           = "keepmapping";
     protected static final String SIGN_ISSUE              = "sign";
     protected static final String ATTR_7ZIP               = "seventzip";
+    protected static final String ATTR_7ZIP_COMPRESSTYPE  = "seventzip_type";
     protected static final String ATTR_KEEPROOT           = "keeproot";
     protected static final String ATTR_SIGNFILE           = "metaname";
     protected static final String ATTR_SIGNFILE_PATH      = "path";
@@ -66,6 +67,7 @@ public class Configuration {
     public String  mStorePass;
     public String  mStoreAlias;
     public String m7zipPath;
+    public String m7zipCompressType;
     public String mZipalignPath;
 
     /**
@@ -379,6 +381,8 @@ public class Configuration {
                     } else if (tagName.equals(ATTR_SIGNFILE)) {
                         mMetaName = vaule;
                         mMetaName = mMetaName.trim();
+                    } else if (tagName.equals(ATTR_7ZIP_COMPRESSTYPE)) {
+                        m7zipCompressType = vaule;
                     } else {
                         System.err.println("unknown tag " + tagName);
                     }
